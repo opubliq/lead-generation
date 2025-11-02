@@ -14,29 +14,31 @@ from time import sleep
 
 
 # Configuration Gemini
-GEMINI_MODEL = "gemini-1.5-flash"
+GEMINI_MODEL = "gemini-2.5-flash"  # Rapide, stable, économique
 PERTINENCE_THRESHOLD = 4  # Garder seulement scores >= 4
 
 # Prompt pour l'évaluation
-EVALUATION_PROMPT = """Tu es un expert en affaires publiques et relations gouvernementales au Québec.
+EVALUATION_PROMPT = """Tu travailles au développement des affaires chez Opubliq et tu analyses les nouvelles pour identifier des clients potentiels.
 
-Opubliq (https://opubliq.com/) est une firme d'affaires publiques qui offre des services de:
-- Lobbying et relations gouvernementales
-- Communications publiques
-- Gestion d'enjeux et de crise
-- Veille stratégique
+Opubliq (https://opubliq.com/) est une firme spécialisée dans la transformation de données d'opinion publique en actions stratégiques. Services offerts:
+- Analyse de données d'opinion publique et recherche sur mesure
+- Stratégie de campagnes politiques et électorales
+- Mesure d'acceptabilité sociale et analyse de sentiment
+- Développement de donateurs et stratégies de financement
 
-Évalue la pertinence de cet article de nouvelles pour identifier des clients potentiels.
+Clients types: partis politiques, candidats, OBNL, groupes de pression, organisations avec enjeux d'acceptabilité sociale.
+
+Évalue la pertinence de cet article pour identifier des clients potentiels.
 
 Titre: {titre}
 Source: {source}
 
 Critères de pertinence:
-- Score 5: Organisation clairement engagée en affaires publiques/lobbying/relations gouvernementales (ex: témoignage en commission parlementaire, recours judiciaire contre loi, campagne publique)
-- Score 4: Organisation avec enjeux gouvernementaux significatifs (ex: ordre professionnel réagit à politique, association fait représentations)
-- Score 3: Enjeu public mais lien indirect aux services d'Opubliq
-- Score 2: Mention marginale d'organisations
-- Score 1: Pas de lien avec les services d'Opubliq
+- Score 5: Organisation menant campagne publique/politique, besoin évident de données d'opinion ou stratégie électorale (ex: parti politique, groupe de pression en campagne, organisation avec enjeu majeur d'acceptabilité sociale)
+- Score 4: Organisation positionnée publiquement sur enjeu politique/social nécessitant potentiellement recherche d'opinion (ex: association prenant position publique, OBNL sur enjeu controversé, groupe mobilisant des membres)
+- Score 3: Organisation mentionnée dans contexte politique mais besoin indirect de recherche d'opinion
+- Score 2: Mention organisationnelle marginale sans lien avec stratégie/opinion publique
+- Score 1: Aucun lien avec les services d'Opubliq
 
 IMPORTANT: Réponds UNIQUEMENT avec un chiffre entre 1 et 5. Aucun texte explicatif."""
 

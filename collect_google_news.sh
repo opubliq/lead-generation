@@ -7,10 +7,18 @@
 #
 # Prérequis:
 # - Variable d'environnement GEMINI_API_KEY définie
-# - Python 3 avec dépendances installées (requests, google-generativeai)
+# - Virtual environment 'venv' avec dépendances installées
 #
 
 set -e  # Arrêter si une commande échoue
+
+# Activer le virtual environment
+source venv/bin/activate
+
+# Charger les variables d'environnement depuis .env
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+fi
 
 # Couleurs pour output
 RED='\033[0;31m'
