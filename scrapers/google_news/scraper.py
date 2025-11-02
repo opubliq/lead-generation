@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Google News RSS Scraper for Lead Generation
-Collecte les articles des 7 derniers jours selon différents signaux
+Collecte les articles des 7 derniers jours selon 2 signaux optimisés
 """
 
 import requests
@@ -10,27 +10,15 @@ from pathlib import Path
 import urllib.parse
 
 
-# Configuration des 5 recherches par signal
+# Configuration des 2 recherches par signal (élargies pour minimiser faux négatifs)
 SEARCH_QUERIES = {
-    "organisations_reactives": {
-        "query": "(association OR fédération OR coalition) (dénonce OR réagit OR demande OR s'oppose OR appelle) Québec when:7d",
-        "description": "Organisations prenant position publiquement"
+    "organisations_action_legislative": {
+        "query": "(association OR fédération OR coalition OR ordre OR syndicat OR regroupement OR conseil OR collectif) (témoigne OR mémoire OR demande OR réclame OR appelle OR dénonce OR réagit OR s'oppose OR critique OR conteste OR interpelle OR exige) (Québec OR gouvernement québécois OR ministre) when:7d",
+        "description": "Organisations en action législative - requête large"
     },
-    "enjeux_legislatifs": {
-        "query": "(projet de loi OR règlement OR consultation publique OR mémoire OR commission parlementaire) (industrie OR secteur OR entreprise OR organisation) Québec when:7d",
-        "description": "Organisations engagées dans processus législatifs"
-    },
-    "financement_gouvernemental": {
-        "query": "(subvention OR financement OR aide gouvernementale OR investissement public) (annonce OR obtient OR reçoit) Québec when:7d",
-        "description": "Relations financières avec le gouvernement"
-    },
-    "recrutement_affaires_publiques": {
-        "query": "(embauche OR recherche OR recrutement) (affaires publiques OR relations gouvernementales OR lobbying OR communications) Québec when:7d",
-        "description": "Besoins directs en services d'affaires publiques"
-    },
-    "gestion_crise": {
-        "query": "(controverse OR critique OR enquête OR scandale) (organisation OR entreprise OR association) Québec when:7d",
-        "description": "Organisations en situation de crise potentielle"
+    "engagement_legislatif_organisationnel": {
+        "query": "(projet de loi OR règlement OR consultation publique OR commission parlementaire) (association OR fédération OR coalition OR ordre OR syndicat OR regroupement) (présente OR dépose OR recommande OR propose OR appuie OR critique OR s'inquiète OR dénonce) Québec when:7d",
+        "description": "Engagement législatif organisationnel - requête large"
     }
 }
 
@@ -63,7 +51,7 @@ def fetch_rss_feed(url: str) -> str:
 
 def save_rss_content(content: str, signal_name: str, date_str: str) -> Path:
     """Sauvegarde le contenu RSS dans le data lake"""
-    output_dir = Path("data/lake/google_news") / date_str
+    output_dir = Path("data/lake/google_news_rss") / date_str
     output_dir.mkdir(parents=True, exist_ok=True)
 
     output_file = output_dir / f"{signal_name}.xml"
@@ -77,7 +65,7 @@ def main():
     date_str = datetime.now().strftime("%Y-%m-%d")
 
     print(f"🔍 Collecte des flux Google News RSS - {date_str}")
-    print(f"📁 Destination: data/lake/google_news/{date_str}/\n")
+    print(f"📁 Destination: data/lake/google_news_rss/{date_str}/\n")
 
     results = []
 
@@ -123,7 +111,7 @@ def main():
     print(f"\n📊 Résumé:")
     print(f"   Réussis: {successful}/{total}")
     print(f"   Taille totale: {total_size:,} bytes")
-    print(f"   Dossier: data/lake/google_news/{date_str}/")
+    print(f"   Dossier: data/lake/google_news_rss/{date_str}/")
 
 
 if __name__ == "__main__":
