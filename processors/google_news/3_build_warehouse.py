@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Étape 4: Construit la table finale du warehouse
+Étape 3: Construit la table finale du warehouse
 Input:  data/lake/google_news_html/<date>/articles_mapping.csv
-Output: data/warehouse/<date>.csv
+Output: data/warehouse/google_news_<date>.csv
 """
 
 import csv
 from pathlib import Path
 from datetime import datetime
+import trafilatura
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
 
     if not mapping_file.exists():
         print(f"❌ Fichier introuvable: {mapping_file}")
-        print(f"   Exécutez d'abord: python processors/google_news/3_download_html.py")
+        print(f"   Exécutez d'abord: python processors/google_news/2_download_html.py")
         return
 
     # Créer le dossier warehouse
@@ -37,21 +38,44 @@ def main():
 
     print(f"📰 {len(articles)} articles à intégrer\n")
 
-    # Pour l'instant, on copie simplement signal, titre, source, url
-    # Dans les étapes futures, on pourra parser les HTMLs pour extraire plus de données
+    # Extraire le contenu textuel de chaque HTML avec trafilatura
+    html_dir = Path("data/lake/google_news_html") / date_str
     warehouse_data = []
 
-    for article in articles:
+    for i, article in enumerate(articles, 1):
+        print(f"[{i}/{len(articles)}] {article['titre'][:60]}...")
+
+        html_file = html_dir / article['html_file']
+
+        # Extraire le texte de l'article
+        contenu = ""
+        if html_file.exists():
+            try:
+                html_content = html_file.read_text(encoding='utf-8')
+                contenu = trafilatura.extract(html_content) or ""
+
+                if contenu:
+                    print(f"   ✅ {len(contenu)} caractères extraits")
+                else:
+                    print(f"   ⚠️  Aucun contenu extrait")
+            except Exception as e:
+                print(f"   ❌ Erreur extraction: {e}")
+        else:
+            print(f"   ❌ HTML introuvable")
+
         warehouse_data.append({
             'signal': article['signal'],
             'titre': article['titre'],
             'source': article['source'],
-            'url': article['url']
+            'url': article['url'],
+            'contenu': contenu
         })
+
+    print()
 
     # Sauvegarder dans le warehouse
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['signal', 'titre', 'source', 'url']
+        fieldnames = ['signal', 'titre', 'source', 'url', 'contenu']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(warehouse_data)

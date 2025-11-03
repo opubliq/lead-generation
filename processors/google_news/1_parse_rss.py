@@ -25,11 +25,12 @@ def extract_articles_from_xml(xml_file: Path, signal_name: str) -> list[dict]:
         for item in items:
             title_elem = item.find('title')
             source_elem = item.find('source')
-            link_elem = item.find('link')
 
             title = title_elem.text if title_elem is not None else "N/A"
             source = source_elem.text if source_elem is not None else "N/A"
-            url = link_elem.text if link_elem is not None else "N/A"
+
+            # Extraire l'URL réelle depuis l'attribut 'url' de <source>
+            url = source_elem.get('url') if source_elem is not None else "N/A"
 
             articles.append({
                 "signal": signal_name,
