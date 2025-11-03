@@ -12,6 +12,7 @@ __pycache__/
 # Data directories
 data/lake/
 data/warehouse/
+data/marts/
 
 # Exploration
 explo/
