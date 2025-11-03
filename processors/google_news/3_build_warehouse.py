@@ -67,7 +67,7 @@ def main():
             'signal': article['signal'],
             'titre': article['titre'],
             'source': article['source'],
-            'url': article['url'],
+            'url': article.get('final_url', article['url']),  # Utiliser final_url si disponible
             'contenu': contenu
         })
 

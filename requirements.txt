@@ -1,0 +1,19 @@
+# Lead Generation Pipeline - Dependencies
+
+# Web scraping
+requests>=2.31.0
+selenium>=4.15.0
+
+# HTML parsing and content extraction
+trafilatura>=1.6.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# LLM API
+google-generativeai>=0.3.0
+
+# Data processing
+pandas>=2.0.0
+
+# CLI utilities
+click>=8.1.0

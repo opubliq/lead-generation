@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Étape 2: Télécharge les HTMLs de tous les articles
+Étape 2: Télécharge les HTMLs de tous les articles via Selenium (pour suivre les redirections Google News)
 Input:  data/lake/google_news_rss/<date>/articles_raw.csv
 Output: data/lake/google_news_html/<date>/article_*.html
 """
@@ -8,10 +8,16 @@ Output: data/lake/google_news_html/<date>/article_*.html
 import csv
 from pathlib import Path
 from datetime import datetime
-import requests
 from time import sleep
 from urllib.parse import urlparse
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 
+
+# Configuration
+MAX_WORKERS = 4  # Nombre de navigateurs parallèles
 
 # Domaines québécois/canadiens acceptés
 ALLOWED_DOMAINS = {
@@ -19,7 +25,7 @@ ALLOWED_DOMAINS = {
     'lapresse.ca', 'ledevoir.com', 'journaldemontreal.com', 'journaldequebec.com',
     'tvanouvelles.ca', 'radio-canada.ca', 'ici.radio-canada.ca', 'rcinet.ca',
     'lactualite.com', 'ledroit.com', 'lesoleil.com', 'latribune.ca',
-    'nouvelliste.ca', 'lequotidien.com', 'lavoixdelest.ca',
+    'nouvelliste.ca', 'lequotidien.com', 'lavoixdelest.ca', 'noovo.info',
     # Gouvernement et institutions québécoises
     'quebec.ca', 'gouv.qc.ca', 'assnat.qc.ca', 'dgeq.org',
     # Ordres professionnels et organisations québécoises
@@ -64,29 +70,93 @@ def is_quebec_canadian_domain(url: str) -> bool:
         return False
 
 
-def download_html(url: str, output_file: Path, timeout: int = 30) -> bool:
-    """Télécharge le HTML d'une URL"""
-    try:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-        }
+def create_driver():
+    """Crée un driver Chrome headless"""
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    return webdriver.Chrome(options=chrome_options)
 
-        response = requests.get(url, headers=headers, timeout=timeout, allow_redirects=True)
-        response.raise_for_status()
+
+def download_html_selenium(driver, url: str, output_file: Path, timeout: int = 30) -> tuple[bool, str]:
+    """Télécharge le HTML d'une URL Google News avec Selenium (suit la redirection JS)"""
+    try:
+        # Définir un timeout de page
+        driver.set_page_load_timeout(timeout)
+
+        # Charger l'URL Google News
+        driver.get(url)
+
+        # Attendre que la redirection JavaScript se fasse
+        sleep(3)
+
+        # Récupérer l'URL finale et le contenu
+        final_url = driver.current_url
+        html_content = driver.page_source
 
         # Sauvegarder le HTML
-        output_file.write_text(response.text, encoding='utf-8')
-        return True
+        output_file.write_text(html_content, encoding='utf-8')
 
-    except requests.exceptions.Timeout:
-        print(f"   ⏱️  Timeout")
-        return False
-    except requests.exceptions.HTTPError as e:
-        print(f"   ❌ Erreur HTTP: {e.response.status_code}")
-        return False
+        return True, final_url
+
     except Exception as e:
-        print(f"   ❌ Erreur: {e}")
-        return False
+        error_msg = str(e)
+        if "timeout" in error_msg.lower():
+            print(f"   ⏱️  Timeout ({timeout}s)")
+        else:
+            print(f"   ❌ Erreur: {error_msg[:100]}")
+        return False, ""
+
+
+def process_article_download(task_data):
+    """Traite le téléchargement d'un article (pour parallélisation)"""
+    i, total, article, output_dir, article_counter = task_data
+
+    # Créer un driver pour ce thread
+    driver = create_driver()
+
+    try:
+        url = article['url']
+
+        print(f"[{i}/{total}] {article['titre'][:50]}...")
+
+        filename = sanitize_filename(url, article_counter)
+        output_file = output_dir / filename
+
+        # Télécharger avec Selenium (avec retry)
+        success, final_url = download_html_selenium(driver, url, output_file, timeout=30)
+
+        # Retry une fois en cas d'échec
+        if not success:
+            print(f"[{i}/{total}] 🔄 Nouvelle tentative...")
+            sleep(2)
+            success, final_url = download_html_selenium(driver, url, output_file, timeout=30)
+
+        if success:
+            # Vérifier si le domaine final est québécois/canadien
+            if is_quebec_canadian_domain(final_url):
+                file_size = output_file.stat().st_size
+                print(f"[{i}/{total}] ✅ {filename} ({file_size:,} bytes)")
+                print(f"[{i}/{total}] 🔗 {final_url[:80]}...")
+
+                return {
+                    'success': True,
+                    'article': article,
+                    'filename': filename,
+                    'final_url': final_url
+                }
+            else:
+                print(f"[{i}/{total}] ⏭️  Ignoré (domaine étranger: {final_url.split('/')[2]})")
+                output_file.unlink()  # Supprimer le fichier
+                return {'success': False, 'skipped': True}
+        else:
+            return {'success': False, 'skipped': False}
+
+    finally:
+        driver.quit()
 
 
 def sanitize_filename(url: str, article_id: int) -> str:
@@ -108,8 +178,9 @@ def main():
     output_dir = Path("data/lake/google_news_html") / date_str
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"🌐 Téléchargement des HTMLs - {date_str}")
-    print(f"📁 Destination: {output_dir}\n")
+    print(f"🌐 Téléchargement des HTMLs avec Selenium - {date_str}")
+    print(f"📁 Destination: {output_dir}")
+    print(f"⚡ Traitement parallèle avec {MAX_WORKERS} navigateurs\n")
 
     # Lire tous les articles
     articles = []
@@ -117,50 +188,45 @@ def main():
         reader = csv.DictReader(f)
         articles = list(reader)
 
-    print(f"📰 {len(articles)} articles à filtrer et télécharger\n")
+    print(f"📰 {len(articles)} articles à télécharger\n")
 
-    # Filtrer et télécharger chaque HTML
+    # Préparer les tâches pour traitement parallèle
+    article_counter = threading.Lock()
+    counter = [0]  # Compteur partagé pour numérotation des fichiers
+
+    def get_counter():
+        with article_counter:
+            counter[0] += 1
+            return counter[0]
+
+    tasks = [(i+1, len(articles), article, output_dir, get_counter()) for i, article in enumerate(articles)]
+
+    # Télécharger en parallèle
     success_count = 0
     skipped_count = 0
-    failed_urls = []
+    failed_count = 0
     filtered_articles = []
 
-    for i, article in enumerate(articles, 1):
-        url = article['url']
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        # Soumettre toutes les tâches
+        future_to_article = {executor.submit(process_article_download, task): task for task in tasks}
 
-        print(f"[{i}/{len(articles)}] {article['titre'][:50]}...")
-        print(f"   URL: {url[:70]}...")
+        # Récupérer les résultats au fur et à mesure
+        for future in as_completed(future_to_article):
+            result = future.result()
 
-        # Filtrer par domaine
-        if not is_quebec_canadian_domain(url):
-            print(f"   ⏭️  Ignoré (domaine étranger)")
-            skipped_count += 1
-            print()
-            continue
+            if result['success']:
+                success_count += 1
+                article = result['article']
+                article['html_file'] = result['filename']
+                article['final_url'] = result['final_url']
+                filtered_articles.append(article)
+            elif result.get('skipped'):
+                skipped_count += 1
+            else:
+                failed_count += 1
 
-        filename = sanitize_filename(url, len(filtered_articles) + 1)
-        output_file = output_dir / filename
-
-        # Télécharger
-        success = download_html(url, output_file)
-
-        if success:
-            file_size = output_file.stat().st_size
-            print(f"   ✅ Téléchargé: {filename} ({file_size:,} bytes)")
-            success_count += 1
-
-            # Ajouter le nom de fichier à l'article pour référence
-            article['html_file'] = filename
-            filtered_articles.append(article)
-        else:
-            failed_urls.append({
-                'titre': article['titre'],
-                'url': url
-            })
-
-        # Rate limiting
-        sleep(1)
-        print()
+    print()
 
     # Mettre à jour la liste des articles avec seulement ceux téléchargés
     articles = filtered_articles
@@ -168,15 +234,15 @@ def main():
     # Créer un mapping CSV pour référence
     mapping_file = output_dir / "articles_mapping.csv"
     with open(mapping_file, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['signal', 'titre', 'source', 'url', 'html_file']
+        fieldnames = ['signal', 'titre', 'source', 'url', 'final_url', 'html_file']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(articles)
 
     # Résumé
-    print(f"{'='*60}")
+    print(f"\n{'='*60}")
     print(f"✅ Téléchargement terminé!")
-    print(f"📊 Téléchargés: {success_count} | Ignorés: {skipped_count} | Échecs: {len(failed_urls)}")
+    print(f"📊 Téléchargés: {success_count} | Ignorés: {skipped_count} | Échecs: {failed_count}")
     print(f"➡️  Prochaine étape: python processors/google_news/3_build_warehouse.py")
 
 
