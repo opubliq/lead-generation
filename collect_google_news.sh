@@ -1,12 +1,13 @@
 #!/bin/bash
 #
 # Pipeline complet de collecte Google News
-# Collecte les articles RSS, télécharge HTMLs et construit le warehouse
+# Collecte les articles RSS, télécharge HTMLs, construit le warehouse et extrait les organisations
 #
 # Usage: ./collect_google_news.sh
 #
 # Prérequis:
 # - Virtual environment 'venv' avec dépendances installées
+# - Variable d'environnement GEMINI_API_KEY définie
 #
 
 set -e  # Arrêter si une commande échoue
@@ -26,8 +27,19 @@ echo -e "${BLUE}Pipeline Google News Lead Gen${NC}"
 echo -e "${BLUE}================================${NC}"
 echo ""
 
+# Vérifier que GEMINI_API_KEY est définie
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+fi
+
+if [ -z "$GEMINI_API_KEY" ]; then
+    echo -e "${RED}❌ Erreur: Variable GEMINI_API_KEY non définie${NC}"
+    echo -e "${YELLOW}   Ajoutez-la dans .env ou: export GEMINI_API_KEY='votre_clé'${NC}"
+    exit 1
+fi
+
 # Étape 1: Collecte RSS
-echo -e "${BLUE}[1/4]${NC} Collecte des flux RSS Google News..."
+echo -e "${BLUE}[1/5]${NC} Collecte des flux RSS Google News..."
 python3 scrapers/google_news/scraper.py
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Collecte RSS terminée${NC}"
@@ -38,7 +50,7 @@ fi
 echo ""
 
 # Étape 2: Parse RSS
-echo -e "${BLUE}[2/4]${NC} Extraction des articles avec URLs..."
+echo -e "${BLUE}[2/5]${NC} Extraction des articles avec URLs..."
 python3 processors/google_news/1_parse_rss.py
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Parse RSS terminé${NC}"
@@ -49,7 +61,7 @@ fi
 echo ""
 
 # Étape 3: Téléchargement HTML
-echo -e "${BLUE}[3/4]${NC} Téléchargement des HTMLs (peut prendre plusieurs minutes)..."
+echo -e "${BLUE}[3/5]${NC} Téléchargement des HTMLs (peut prendre plusieurs minutes)..."
 python3 processors/google_news/2_download_html.py
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Téléchargement HTML terminé${NC}"
@@ -60,7 +72,7 @@ fi
 echo ""
 
 # Étape 4: Construction warehouse
-echo -e "${BLUE}[4/4]${NC} Construction de la table warehouse..."
+echo -e "${BLUE}[4/5]${NC} Construction de la table warehouse..."
 python3 processors/google_news/3_build_warehouse.py
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Warehouse construit${NC}"
@@ -70,24 +82,41 @@ else
 fi
 echo ""
 
+# Étape 5: Extraction des organisations
+echo -e "${BLUE}[5/5]${NC} Extraction des organisations avec Gemini (peut prendre quelques minutes)..."
+python3 processors/google_news/4_extract_organizations.py
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}✅ Organisations extraites${NC}"
+else
+    echo -e "${RED}❌ Échec de l'extraction des organisations${NC}"
+    exit 1
+fi
+echo ""
+
 # Résumé
 DATE=$(date +%Y-%m-%d)
 WAREHOUSE_FILE="data/warehouse/google_news_${DATE}.csv"
+ORGANIZATIONS_FILE="data/warehouse/google_news_organizations_${DATE}.json"
 
 echo -e "${GREEN}================================${NC}"
 echo -e "${GREEN}✅ Pipeline terminé avec succès!${NC}"
 echo -e "${GREEN}================================${NC}"
 echo ""
-echo -e "📊 Résultats disponibles dans:"
+echo -e "📊 Résultats disponibles:"
 echo -e "   ${YELLOW}${WAREHOUSE_FILE}${NC}"
-echo ""
-echo -e "📁 Données brutes dans:"
-echo -e "   data/lake/google_news_rss/${DATE}/"
-echo -e "   data/lake/google_news_html/${DATE}/"
+echo -e "   ${YELLOW}${ORGANIZATIONS_FILE}${NC}"
 echo ""
 
-# Afficher nombre d'articles si le fichier existe
+# Afficher statistiques
 if [ -f "$WAREHOUSE_FILE" ]; then
     ARTICLE_COUNT=$(tail -n +2 "$WAREHOUSE_FILE" | wc -l)
-    echo -e "${GREEN}🎉 ${ARTICLE_COUNT} articles qualifiés collectés!${NC}"
+    echo -e "${GREEN}📰 ${ARTICLE_COUNT} articles collectés${NC}"
 fi
+
+if [ -f "$ORGANIZATIONS_FILE" ]; then
+    ORG_COUNT=$(grep -o '"nom":' "$ORGANIZATIONS_FILE" | wc -l)
+    echo -e "${GREEN}🏢 ${ORG_COUNT} organisations identifiées${NC}"
+fi
+
+echo ""
+echo -e "➡️  Prochaine étape: Analyse Stage 2 avec Claude Code"

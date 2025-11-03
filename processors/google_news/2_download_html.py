@@ -46,6 +46,10 @@ def is_quebec_canadian_domain(url: str) -> bool:
         if domain.startswith('www.'):
             domain = domain[4:]
 
+        # Accepter tous les .ca (canadiens par défaut)
+        if domain.endswith('.ca'):
+            return True
+
         # Vérifier si le domaine exact est dans la liste
         if domain in ALLOWED_DOMAINS:
             return True
@@ -54,10 +58,6 @@ def is_quebec_canadian_domain(url: str) -> bool:
         for allowed in ALLOWED_DOMAINS:
             if domain.endswith('.' + allowed):
                 return True
-
-        # Vérifier extension .qc.ca
-        if domain.endswith('.qc.ca'):
-            return True
 
         return False
     except:
