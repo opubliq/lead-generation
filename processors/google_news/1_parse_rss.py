@@ -26,6 +26,7 @@ def extract_articles_from_xml(xml_file: Path, signal_name: str) -> list[dict]:
             title_elem = item.find('title')
             source_elem = item.find('source')
             link_elem = item.find('link')
+            pub_date_elem = item.find('pubDate')
 
             title = title_elem.text if title_elem is not None else "N/A"
             source = source_elem.text if source_elem is not None else "N/A"
@@ -33,11 +34,15 @@ def extract_articles_from_xml(xml_file: Path, signal_name: str) -> list[dict]:
             # Extraire l'URL de l'article depuis <link> (URL Google News qui redirige vers l'article)
             url = link_elem.text if link_elem is not None else "N/A"
 
+            # Extraire la date de publication
+            pub_date = pub_date_elem.text if pub_date_elem is not None else "N/A"
+
             articles.append({
                 "signal": signal_name,
                 "titre": title,
                 "source": source,
-                "url": url
+                "url": url,
+                "date": pub_date
             })
 
     except Exception as e:
@@ -47,7 +52,7 @@ def extract_articles_from_xml(xml_file: Path, signal_name: str) -> list[dict]:
 
 
 def main():
-    """Parse tous les fichiers XML du jour et crée un CSV avec URLs"""
+    """Parse le fichier XML consolidé et crée un CSV avec URLs"""
     date_str = datetime.now().strftime("%Y-%m-%d")
     data_dir = Path("data/lake/google_news_rss") / date_str
 
@@ -58,28 +63,26 @@ def main():
 
     print(f"📊 Extraction des articles RSS - {date_str}\n")
 
-    xml_files = sorted(data_dir.glob("*.xml"))
+    # Chercher le fichier consolidé
+    consolidated_file = data_dir / "articles_consolidated.xml"
 
-    if not xml_files:
-        print(f"❌ Aucun fichier XML trouvé dans {data_dir}")
+    if not consolidated_file.exists():
+        print(f"❌ Fichier consolidé non trouvé: {consolidated_file}")
+        print(f"   Exécutez d'abord: python scrapers/google_news/scraper.py")
         return
 
     all_articles = []
 
-    for xml_file in xml_files:
-        signal_name = xml_file.stem
-        print(f"📰 Traitement: {signal_name}")
-
-        articles = extract_articles_from_xml(xml_file, signal_name)
-        all_articles.extend(articles)
-
-        print(f"   ✅ {len(articles)} articles extraits")
+    print(f"📰 Traitement: {consolidated_file.name}")
+    articles = extract_articles_from_xml(consolidated_file, "consolidated")
+    all_articles.extend(articles)
+    print(f"   ✅ {len(articles)} articles extraits")
 
     # Créer le CSV avec URLs
     csv_file = data_dir / "articles_raw.csv"
 
     with open(csv_file, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=['signal', 'titre', 'source', 'url'])
+        writer = csv.DictWriter(f, fieldnames=['signal', 'titre', 'source', 'url', 'date'])
         writer.writeheader()
         writer.writerows(all_articles)
 

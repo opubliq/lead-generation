@@ -83,7 +83,7 @@ fi
 echo ""
 
 # Étape 5: Extraction des organisations
-echo -e "${BLUE}[5/5]${NC} Extraction des organisations avec Gemini (peut prendre quelques minutes)..."
+echo -e "${BLUE}[5/6]${NC} Extraction des organisations avec Gemini (peut prendre quelques minutes)..."
 python3 processors/google_news/4_extract_organizations.py
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Organisations extraites${NC}"
@@ -93,10 +93,22 @@ else
 fi
 echo ""
 
+# Étape 6: Qualification des leads
+echo -e "${BLUE}[6/6]${NC} Qualification des leads avec Gemini (peut prendre quelques minutes)..."
+python3 processors/google_news/5_qualify_leads.py
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}✅ Leads qualifiés${NC}"
+else
+    echo -e "${RED}❌ Échec de la qualification des leads${NC}"
+    exit 1
+fi
+echo ""
+
 # Résumé
 DATE=$(date +%Y-%m-%d)
 WAREHOUSE_FILE="data/warehouse/google_news_${DATE}.csv"
 ORGANIZATIONS_FILE="data/warehouse/google_news_organizations_${DATE}.json"
+LEADS_FILE="data/marts/${DATE}/google_news_leads.json"
 
 echo -e "${GREEN}================================${NC}"
 echo -e "${GREEN}✅ Pipeline terminé avec succès!${NC}"
@@ -105,6 +117,7 @@ echo ""
 echo -e "📊 Résultats disponibles:"
 echo -e "   ${YELLOW}${WAREHOUSE_FILE}${NC}"
 echo -e "   ${YELLOW}${ORGANIZATIONS_FILE}${NC}"
+echo -e "   ${YELLOW}${LEADS_FILE}${NC}"
 echo ""
 
 # Afficher statistiques
@@ -118,5 +131,10 @@ if [ -f "$ORGANIZATIONS_FILE" ]; then
     echo -e "${GREEN}🏢 ${ORG_COUNT} organisations identifiées${NC}"
 fi
 
+if [ -f "$LEADS_FILE" ]; then
+    LEAD_COUNT=$(grep -o '"lead_potentiel": true' "$LEADS_FILE" | wc -l)
+    echo -e "${GREEN}🎯 ${LEAD_COUNT} leads qualifiés${NC}"
+fi
+
 echo ""
-echo -e "➡️  Prochaine étape: Analyse Stage 2 avec Claude Code"
+echo -e "➡️  Prochaine étape: Générer le rapport avec /generate-lead-report"

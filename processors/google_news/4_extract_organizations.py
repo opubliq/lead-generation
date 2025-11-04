@@ -212,6 +212,7 @@ def process_article(article_data):
             "titre": article['titre'],
             "source": article['source'],
             "url": article['url'],
+            "date": article.get('date', 'N/A'),
             "signal": article['signal'],
             "resume": result["resume_article"]
         },
@@ -293,6 +294,7 @@ def main():
                 "titre": extraction_data["article"]["titre"],
                 "source": extraction_data["article"]["source"],
                 "url": extraction_data["article"]["url"],
+                "date": extraction_data["article"].get("date", "N/A"),
                 "signal": extraction_data["article"]["signal"],
                 "resume": extraction_data["article"]["resume"]
             })

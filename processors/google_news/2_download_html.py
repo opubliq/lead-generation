@@ -234,7 +234,7 @@ def main():
     # Créer un mapping CSV pour référence
     mapping_file = output_dir / "articles_mapping.csv"
     with open(mapping_file, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['signal', 'titre', 'source', 'url', 'final_url', 'html_file']
+        fieldnames = ['signal', 'titre', 'source', 'url', 'date', 'final_url', 'html_file']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(articles)

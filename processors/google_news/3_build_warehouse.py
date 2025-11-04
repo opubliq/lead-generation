@@ -68,6 +68,7 @@ def main():
             'titre': article['titre'],
             'source': article['source'],
             'url': article.get('final_url', article['url']),  # Utiliser final_url si disponible
+            'date': article.get('date', 'N/A'),
             'contenu': contenu
         })
 
@@ -75,7 +76,7 @@ def main():
 
     # Sauvegarder dans le warehouse
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
-        fieldnames = ['signal', 'titre', 'source', 'url', 'contenu']
+        fieldnames = ['signal', 'titre', 'source', 'url', 'date', 'contenu']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(warehouse_data)
