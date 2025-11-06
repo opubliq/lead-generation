@@ -73,9 +73,9 @@ You MUST follow this exact structure for every report:
 - **Opportunité**: [1-2 phrases sur WHY NOW, ROI potentiel, fenêtre stratégique - focus business value, pas répétition contexte]
 - **Action suggérée**: [Contact (titre), timing (date limite), pitch (1 phrase punchy MAX)]
 - **Références**:
-  - [Titre article 1 - Source - URL]
-  - [Titre article 2 - Source - URL]
-  - [Titre article 3 - Source - URL]
+  - [Titre article 1 - Source - Date - URL]
+  - [Titre article 2 - Source - Date - URL]
+  - [Titre article 3 - Source - Date - URL]
 
 ### 2. [Nom de l'organisation]
 
@@ -95,14 +95,18 @@ You MUST follow this exact structure for every report:
 
 1. **Read the qualified leads JSON file** from `data/marts/[DATE]/google_news_leads.json` - this contains organizations that have already been filtered by Gemini as potential leads with qualification scores
 
-2. **Analyze the news context**: Review `data/warehouse/google_news_summaries_[DATE].json` to understand the broader context of current issues and trends in Quebec public affairs
+2. **Analyze the news context**: Review `data/warehouse/google_news_summaries_[DATE].json` to understand the broader context of current issues and trends in Quebec public affairs. **IMPORTANT**: Each article in this file now contains a `date` field with the publication date in RSS format (e.g., "Mon, 28 Oct 2025 12:34:56 GMT"). Use these dates to:
+   - Identify the most recent/current developments
+   - Understand the timeline of events and issues
+   - Prioritize recency in your analysis
 
 3. **Write the news summary section**: Create a concise, bullet-point summary (max 1 page) highlighting:
-   - Key policy issues and debates appearing in the data
+   - Key policy issues and debates appearing in the data (mention timeframe based on article dates)
    - Sectors showing increased public engagement
    - Types of organizations becoming vocal
    - Signals indicating potential need for Opubliq services
    - Geographic or thematic patterns
+   - Timeline context: Are these breaking issues (last 1-2 days) or sustained campaigns (spanning the full period)?
 
 4. **Select and RE-SCORE top 10 leads**:
    - Read ALL qualified leads from the JSON (you have the full context, unlike Gemini which scored individually)
@@ -119,11 +123,11 @@ You MUST follow this exact structure for every report:
 
 5. **Write concise lead profiles** (8-10 lines MAXIMUM per lead including references):
    - **Header line**: Score (X/10) | Type | Urgency (on same line, separated by pipes) - USE YOUR RE-SCORED VALUE, NOT GEMINI'S
-   - **Contexte**: 2-3 sentences MAX - be factual and concise, include organization size/budget if relevant, avoid repetition. ONLY use information from the source data.
+   - **Contexte**: 2-3 sentences MAX - be factual and concise, include organization size/budget if relevant, avoid repetition. ONLY use information from the source data. **Use article dates to provide temporal context** (e.g., "s'est prononcé le 28 octobre", "campagne publique amorcée fin octobre").
    - **Besoin Opubliq**: Describe the FACTUAL SITUATION that creates a potential need, then mention which service category could be relevant. DO NOT describe a specific deliverable or project the organization never mentioned. Format: "[What they are actually doing/facing from articles] - potentiel pour [service category]". Example: "Opposition publique à une réforme sans appui de données - potentiel pour recherche d'opinion" NOT "Sondage pour mesurer X" or "Étude sur Y".
-   - **Opportunité**: 1-2 sentences explaining WHY NOW, potential ROI, strategic window based ONLY on factual information from sources - don't repeat context, focus on business value
-   - **Action suggérée**: This is the ONLY section where you can make suggestions. Suggest who to contact (specific title), precise timing (before what date/event?), and a pitch angle (1 punchy sentence MAX)
-   - **Références**: List 2-3 most relevant articles (prioritize most recent and most significant). Format: "Titre - Source - URL". Select articles that best support the context and need described above.
+   - **Opportunité**: 1-2 sentences explaining WHY NOW, potential ROI, strategic window based ONLY on factual information from sources - don't repeat context, focus on business value. **Consider article dates to assess urgency and timing windows**.
+   - **Action suggérée**: This is the ONLY section where you can make suggestions. Suggest who to contact (specific title), precise timing (before what date/event? - base this on article dates and event timelines), and a pitch angle (1 punchy sentence MAX)
+   - **Références**: List 2-3 most relevant articles (prioritize most recent and most significant). Format: "Titre - Source - Date - URL" (**include the publication date from the data for transparency**). Select articles that best support the context and need described above.
 
 6. **Add metadata footer**: Include date, total organizations analyzed, and number of qualified leads
 

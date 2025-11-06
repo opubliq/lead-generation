@@ -1,0 +1,368 @@
+
+
+=== ERREUR POUR: Adoption du projet de loi n° 94 - Une tâche alourd ===
+{
+  "resume_article": "L'article rapporte la dénonciation par la Fédération des syndicats de l'enseignement (FSE-CSQ) de l'adoption du projet de loi 94 par l'Assemblée nationale du Québec. Ce projet de loi, porté par le gouvernement de la CAQ, est critiqué pour l'alourdissement de la tâche des enseignants via l'évaluation systématique et pour la limitation de leur liberté d'expression par un code d'éthique avec clause dérogatoire. La FSE-CSQ déplore ces mesures, les jugeant contre-productives dans un contexte de pénurie et de ressources limitées.",
+  "organisations": [
+    {
+      "nom": "Fédération des syndicats de l'enseignement (FSE-CSQ)",
+      "type": "Syndicat",
+      "action": "Dénonce, déplore, critique",
+      "enjeu": "Conséquences négatives du projet de loi 94",
+      "citation": "La Fédération des syndicats de l'enseignement (FSE‑CSQ) déplore les conséquences que ces changements auront sur la tâche et le climat de travail dans les écoles.",
+      "resume": "Le syndicat dénonce l'adoption du projet de loi 94, critiquant l'alourdissement de la tâche enseignante et les restrictions de liberté d'expression imposées par le gouvernement." },
+    {
+      "nom": "Gouvernement du Québec / Coalition Avenir Québec (CAQ)",
+      "type": "Gouvernement / Parti politique au pouvoir",
+      "action": "Propose, adopte, limite, ajoute, impose, légalise",
+      "enjeu": "Renforcement laïcité, évaluation, code d'éthique enseignants",
+      "citation": "Considérant que le gouvernement lui-même limite le nombre d'heures travaillées dans les écoles, il est paradoxal de constater qu'il ajoute une charge de travail administrative en imposant l'évaluation systématique de tous les enseignants..." et "Le gouvernement de la CAQ a aussi profité de ce projet de loi pour légaliser rétroactivement l'adoption du code d'éthique qu'il avait cavalièrement imposé aux enseignants.",
+      "resume": "Le gouvernement a fait adopter le projet de loi 94, imposant une évaluation systématique et un code d'éthique controversé aux enseignants, alourdissant leur tâche." },
+    {
+      "nom": "Assemblée nationale du Québec",
+      "type": "Organisme public",
+      "action": "Adopte",
+      "enjeu": "Adoption du projet de loi 94",
+      "citation": "Le projet de loi no 94, Loi visant notamment à renforcer la laïcité dans le réseau de l'éducation et modifiant diverses dispositions législatives, ayant été adopté hier à l'Assemblée nationale du Québec...",
+      "resume": "L'Assemblée nationale a officiellement adopté le projet de loi 94, qui vise à renforcer la laïcité dans le réseau de l'éducation québécois." }
+  ]
+}
+ERREUR: Expecting ',' delimiter: line 17 column 262 (char 1715)
+
+
+=== ERREUR POUR: Le réseau de la santé en mauvaise santé ! | Qui a  ===
+{
+  "resume_article": "Cet article de Planète 99.5 met en lumière la détérioration du réseau de la santé québécois, exacerbée par les tensions entre les professionnels et le Gouvernement. La Fédération interprofessionnelle de la santé du Québec (FIQ) dénonce un climat de travail malsain suite à l'adoption du PL2, poussant des médecins à envisager d'autres options. Des craintes sont émises concernant la survie des services en région et des coupes de postes, notamment à Chicoutimi, suite aux réformes gouvernementales telles que la prise de possession du réseau par Santé Québec.",
+  "organisations": [
+    {
+      "nom": "Fédération interprofessionnelle de la santé du Québec (FIQ)",
+      "type": "Syndicat",
+      "action": "Dénonce",
+      "enjeu": "Climat de travail malsain, PL2",
+      "citation": "La Fédération interprofessionnelle de la santé du Québec dénonce que le climat de travail est malsain depuis l'adoption du PL2 sous bâillon",
+      "resume": "La FIQ dénonce la dégradation du climat de travail dans le réseau de la santé québécois, imputable à l'adoption controversée du PL2 par le gouvernement." },
+    {
+      "nom": "FIQ au Saguenay Lac-Saint-Jean",
+      "type": "Syndicat (branche régionale)",
+      "action": "Indique, craint, se prononce",
+      "enjeu": "Manque personnel urgence, survie services régionaux, Santé Québec",
+      "citation": "La présidente de la FIQ au Saguenay Lac-Saint-Jean Julie Boivin indique que la région s'en sort tout de même plutôt bien concernant le manque de personnel d'urgence. Toutefois, cette dernière craint la survie des services en région suite à la prise de possession du réseau par Santé Québec. [...] se prononce sur le bar de fer actuel.",
+      "resume": "La FIQ régionale observe la situation du personnel d'urgence, exprime des inquiétudes sur la pérennité des services locaux avec Santé Québec et commente le conflit en cours." },
+    {
+      "nom": "Gouvernement du Québec",
+      "type": "Gouvernement",
+      "action": "Adopte, met en place, envisage",
+      "enjeu": "Réforme santé (PL2, Santé Québec), coupes budgétaires",
+      "citation": "adoption du PL2 sous bâillon", "prise de possession du réseau par Santé Québec", "16 postes pourraient être coupées, dans l'optique de rentrer correctement dans les dépenses.",
+      "resume": "Le Gouvernement du Québec est l'initiateur du PL2, de la création de Santé Québec et des coupes de postes, des mesures qui suscitent de fortes critiques." }
+  ]
+}
+ERREUR: Expecting ':' delimiter: line 25 column 99 (char 2210)
+
+
+=== ERREUR POUR: Le carnet des collines - La Presse ===
+{
+  "resume_article": "L article \"Le carnet des collines\" dresse un tableau des turbulences politiques québécoises, révélant les défis du gouvernement Legault face aux compressions budgétaires de la Sûreté du Québec et à sa controversée loi sur la rémunération des médecins. Ces enjeux, qui ont même mené au départ d un député de la CAQ et à de vives réactions de la Fédération des médecins, se déroulent sur fond de rivalités exacerbées entre le Parti québécois et le Parti libéral en vue des élections de 2026. Un nouveau projet de loi pour encadrer les syndicats vient complexifier davantage le paysage politique actuel.",
+  "organisations": [
+    {
+      "nom": "Gouvernement Legault",
+      "type": "Gouvernement",
+      "action": "Impose des compressions budgétaires et est à l origine d une loi spéciale sur la rémunération des médecins",
+      "enjeu": "Compressions budgétaires SQ, loi rémunération médecins, loi et ordre",
+      "citation": "C est le montant des compressions imposées par le gouvernement Legault à la Sûreté du Québec au moment même où il dit faire de « la loi et l ordre » une priorité. C est environ 10 % du budget du corps de police. [...] le gouvernement Legault a trébuché cette semaine avec sa loi spéciale sur la rémunération des médecins.",
+      "resume": "Le gouvernement est critiqué pour ses compressions à la Sûreté du Québec et sa loi spéciale sur la rémunération des médecins, provoquant des turbulences politiques." },
+    {
+      "nom": "Coalition avenir Québec (CAQ)",
+      "type": "Parti politique",
+      "action": "Est à l origine de la loi spéciale sur la rémunération des médecins, menant au départ d un député, et est à la traîne dans les sondages",
+      "enjeu": "Rémunération des médecins, stabilité parlementaire, position dans les sondages",
+      "citation": "Lionel Carmant, qui a quitté la Coalition avenir Québec pour devenir député indépendant à cause de la loi spéciale sur la rémunération des médecins. [...] Signe que la Coalition avenir Québec est à la traîne dans les sondages",
+      "resume": "Le parti au pouvoir est confronté au départ d un député à cause de sa loi sur les médecins et voit sa popularité décliner dans les sondages." },
+    {
+      "nom": "Sûreté du Québec (SQ)",
+      "type": "Organisme public",
+      "action": "Subit des compressions budgétaires et envisage la fermeture de postes auxiliaires",
+      "enjeu": "Compressions budgétaires, maintien des services régionaux, gestion des ressources",
+      "citation": "C est le montant des compressions imposées par le gouvernement Legault à la Sûreté du Québec au moment même où il dit faire de « la loi et l ordre » une priorité. [...] La direction de la SQ envisageait entre autres de fermer 12 postes de police auxiliaires en région",
+      "resume": "La SQ est forcée d appliquer des compressions budgétaires, ce qui la pousse à envisager des fermetures de postes auxiliaires, suscitant des critiques." },
+    {
+      "nom": "Ministère de la Sécurité publique",
+      "type": "Ministère",
+      "action": "Demande à la Sûreté du Québec de revoir ses plans de coupes et de privilégier les coupes administratives",
+      "enjeu": "Réaffectation des coupes budgétaires, efficacité administrative, services policiers",
+      "citation": "Le ministre de la Sécurité publique, Ian Lafrenière, a demandé à la SQ de retourner à la planche à dessin et de plutôt faire des coupes dans l administration.",
+      "resume": "Le ministère, par l entremise de son ministre, demande à la Sûreté du Québec de réévaluer ses compressions budgétaires et de cibler l administration." },
+    {
+      "nom": "Ministère de la Santé et des Services sociaux",
+      "type": "Ministère",
+      "action": "Propose une réforme (loi spéciale) sur la rémunération des médecins",
+      "enjeu": "Réforme de la rémunération des médecins, gestion du système de santé",
+      "citation": "En chemin vers la réunion du caucus caquiste, le ministre de la Santé, Christian Dubé, a trébuché dans un escalier du parlement, devant la presse parlementaire. Il a lancé une boutade du tac au tac : « Ce n est pas le temps d aller à l hôpital ! » [...] malgré votre réforme bâclée et improvisée",
+      "resume": "Le ministère est au centre des critiques concernant une réforme "bâclée et improvisée" de la rémunération des médecins, générant des tensions." },
+    {
+      "nom": "Fédération des médecins omnipraticiens du Québec (FMOQ)",
+      "type": "Association professionnelle",
+      "action": "Réagit négativement et critique la loi spéciale sur la rémunération des médecins",
+      "enjeu": "Rémunération des médecins, conditions de travail, accès aux soins",
+      "citation": "La Fédération des médecins omnipraticiens du Québec n était pas d humeur à rire. « On ne choisit pas le moment, dans la vie, où on doit se rendre à l hôpital. Monsieur Dubé, malgré votre réforme bâclée et improvisée, qui fera mal à tout le monde sans exception, les médecins de famille continueront d être là pour soigner les Québécois », a-t-elle réagi sur les réseaux sociaux.",
+      "resume": "La FMOQ critique vivement la réforme de la rémunération des médecins proposée par le ministre Dubé, la jugeant bâclée et néfaste." },
+    {
+      "nom": "Parti québécois (PQ)",
+      "type": "Parti politique",
+      "action": "Attaque le Parti libéral, le qualifiant de corrompu, et engage des rivalités partisanes",
+      "enjeu": "Rivalités partisanes, image des partis politiques, positionnement électoral",
+      "citation": "Dans des mêlées de presse successives à la hot room, à l Assemblée nationale, Paul St-Pierre Plamondon a traité les rouges de corrompus, associant leur nouveau chef Pablo Rodriguez aux scandales de l ère Charest et aux controverses de l ancien gouvernement Trudeau à Ottawa.",
+      "resume": "Le PQ intensifie ses attaques contre le Parti libéral, les qualifiant de corrompus et rappelant d anciens scandales, ravivant les tensions." },
+    {
+      "nom": "Parti libéral du Québec (PLQ)",
+      "type": "Parti politique",
+      "action": "Réplique aux attaques du PQ, les associant à l incapacité de gérer, et engage des rivalités partisanes",
+      "enjeu": "Rivalités partisanes, image des partis politiques, positionnement électoral",
+      "citation": "Les libéraux, furieux, ont réfléchi à poursuivre le chef du PQ, mais se sont ravisés. À leur tour, ils ont associé l étiquette « péquiste » comme un mot à connotation négative, qui signifie « ne pas être capable de gérer », en référence au déficit laissé par l ex-gouvernement de Pauline Marois.",
+      "resume": "Le PLQ riposte aux attaques du PQ, associant l étiquette \"péquiste\" à l incompétence de gestion, intensifiant les querelles politiques." },
+    {
+      "nom": "Ministère du Travail",
+      "type": "Ministère",
+      "action": "Dépôse un projet de loi visant à resserrer les règles pour les syndicats",
+      "enjeu": "Encadrement des syndicats, droit du travail, relations employeurs-employés",
+      "citation": "Le ministre du Travail, Jean Boulet, n y est pas allé de main morte pour mettre la table à son – autre – projet de loi pour serrer la vis aux syndicats, document déposé jeudi à l Assemblée nat",
+      "resume": "Le ministère, via son ministre, dépose un projet de loi pour encadrer plus strictement les syndicats, signalant une orientation ferme." }
+  ]
+}
+ERREUR: Expecting ',' delimiter: line 42 column 83 (char 4294)
+
+
+=== ERREUR POUR: Les postiers veulent qu’Ottawa reste à l’écart des ===
+{
+  "resume_article": "L article met en lumière la demande du Syndicat des travailleurs et travailleuses des postes (STTP) de voir le gouvernement fédéral se retirer des négociations pour une nouvelle convention collective avec Postes Canada. Le syndicat accuse Ottawa d ingérence excessive, notamment en modifiant le mandat de la société d Etat et en entachant le processus de négociation. Malgré ces tensions, Postes Canada et le STTP ont confirmé leur intention de rencontrer un médiateur cette semaine pour tenter de résoudre l impasse.",
+  "organisations": [
+    {
+      "nom": "Syndicat des travailleurs et travailleuses des postes (STTP)",
+      "type": "Syndicat",
+      "action": "Demande le retrait du gouvernement fédéral des négociations, critique les changements au mandat de Postes Canada, s adresse aux députés, soutient que l implication gouvernementale est un obstacle.",
+      "enjeu": "Autonomie des négociations collectives, avenir service postal",
+      "citation": "Le syndicat représentant des milliers de travailleurs de Postes Canada en grève tournante souhaite que le gouvernement fédéral se retire des pourparlers alors que les parties s apprêtent à retourner à la table des négociations pour la première fois depuis près d un mois.",
+      "resume": "Le STTP, représentant les postiers, demande qu Ottawa se retire des négociations, critiquant son ingérence et les changements au mandat qui entravent la négociation collective." },
+    {
+      "nom": "Postes Canada",
+      "type": "Entreprise publique (société d Etat)",
+      "action": "Entame des négociations, confirme rencontre médiateur, chargée d elaborer plan de mise en œuvre de changements.",
+      "enjeu": "Négociations convention collective, mise en œuvre de changements",
+      "citation": "Postes Canada et son principal syndicat veulent rencontrer un médiateur plus tard cette semaine." , "Postes Canada a eu 45 jours pour élaborer un plan de mise en œuvre des changements proposés...",
+      "resume": "Postes Canada est en négociations tendues avec son syndicat pour une nouvelle convention collective et prévoit une rencontre avec un médiateur cette semaine." },
+    {
+      "nom": "Gouvernement fédéral",
+      "type": "Gouvernement",
+      "action": "A apporté des changements radicaux au mandat de Postes Canada, son ministre a fait une annonce, est accusé d implication excessive qui a entaché les négociations.",
+      "enjeu": "Ingérence dans les négociations, avenir du service postal, modification du mandat de Postes Canada",
+      "citation": "Le syndicat [...] souhaite que le gouvernement fédéral se retire des pourparlers..." et "Ottawa a entaché les négociations par des interventions telles que la modification du mandat et la soumission des offres de Postes Canada à un vote direct des travailleurs des postes...",
+      "resume": "Le gouvernement fédéral est accusé par le STTP d ingérence excessive dans les négociations de Postes Canada via des changements de mandat et d avoir entaché les pourparlers." }
+  ]
+}
+ERREUR: Expecting ':' delimiter: line 17 column 216 (char 1983)
+
+
+=== ERREUR POUR: Cotisations facultatives: le ministre Jean Boulet  ===
+{
+  "resume_article": "Le gouvernement Legault, par l'entremise du ministre Jean Boulet, dépose un projet de loi visant à rendre facultatives une partie des cotisations syndicales. Ce projet permettrait aux travailleurs de voter annuellement pour décider si leurs cotisations financent des activités non directement liées à la défense de leurs droits, comme les campagnes politiques ou les mouvements sociaux. Motivée par de récentes controverses de dépenses syndicales et le financement de contestations légales, la mesure oblige aussi les syndicats à produire des états financiers vérifiés et à détailler l'utilisation des fonds. Le gouvernement souhaite ainsi accroître la transparence et recentrer les syndicats sur leur mission principale de représentation et négociation.",
+  "organisations": [
+    {
+      "nom": "Gouvernement Legault",
+      "type": "Gouvernement",
+      "action": "Ouvre un front, propose un projet de loi, critique, agit, oblige",
+      "enjeu": "Réformer cotisations syndicales, exiger transparence financière",
+      "citation": "Après les médecins, le gouvernement Legault ouvre un autre front, contre les syndicats cette fois. Le ministre du Travail, Jean Boulet, vient de déposer son projet de loi pour rendre une partie des cotisations syndicales facultatives.",
+      "resume": "Le gouvernement Legault propose un projet de loi majeur pour rendre une partie des cotisations syndicales facultatives et imposer plus de transparence financière." },
+    {
+      "nom": "Ministre du Travail, Jean Boulet",
+      "type": "Ministre du gouvernement",
+      "action": "Dépose un projet de loi, souhaite, précise, ajoute, assure",
+      "enjeu": "Rendre cotisations syndicales facultatives, limiter financement politique, définir mission syndicale",
+      "citation": "Le ministre du Travail, Jean Boulet, vient de déposer son projet de loi pour rendre une partie des cotisations syndicales facultatives.",
+      "resume": "Jean Boulet a déposé un projet de loi pour que les cotisations syndicales facultatives ne financent que les activités 'périphériques' à la défense des droits." },
+    {
+      "nom": "Syndicats",
+      "type": "Société civile / Syndicats",
+      "action": "Sont visés par un projet de loi, devront soumettre états financiers, gèrent les cotisations",
+      "enjeu": "Transparence financière, gestion des cotisations, financement d'activités 'périphériques'",
+      "citation": "Le ministre souhaite que les travailleurs puissent voter pour qu'une partie de leurs cotisations ne serve pas à des activités autres que la défense de leurs droits." et "Le gouvernement va obliger les syndicats à produire des états financiers vérifiés.",
+      "resume": "Les syndicats sont directement concernés par le projet de loi qui rend facultatives certaines cotisations et exige une vérification annuelle de leurs états financiers." },
+    {
+      "nom": "Fédération des travailleurs du Québec (FTQ)",
+      "type": "Société civile / Syndicat",
+      "action": "A provoqué une controverse, est critiquée",
+      "enjeu": "Dépenses controversées (voyage à Dubaï), utilisation des cotisations",
+      "citation": "En novembre 2023, la présidente de la FTQ, Magali Picard, provoque une levée de boucliers en se rendant à Dubaï pour une conférence sur les changements climatiques alors que le Front commun était en négociations avec le gouvernement.",
+      "resume": "La FTQ a suscité une controverse médiatisée concernant le voyage de sa présidente à Dubaï, ce qui a contribué à la justification du projet de loi gouvernemental." },
+    {
+      "nom": "FTQ-Construction",
+      "type": "Société civile / Syndicat sectoriel",
+      "action": "A fait l'objet de révélations sur des dépenses, est critiquée",
+      "enjeu": "Dépenses excessives (alcool, repas), utilisation des cotisations",
+      "citation": "En début d'année, le «Journal de Montréal» a révélé que des dépenses d'alcool et de repas au restaurant avaient été approuvées par la haute direction de la FTQ-Construction, parmi lesquelles du scotch à 55 $ le verre, du whisky japonais à 30 $, du filet mignon à 80 $ et autres.",
+      "resume": "La FTQ-Construction a été ciblée pour des dépenses de luxe (alcool, repas) de sa direction, renforçant la nécessité perçue de transparence des cotisations." },
+    {
+      "nom": "Fédération autonome de l'enseignement (FAE)",
+      "type": "Société civile / Syndicat",
+      "action": "A contesté une loi, est critiquée par le gouvernement",
+      "enjeu": "Utilisation des cotisations pour contester la Loi sur la laïcité",
+      "citation": "Le gouvernement Legault a régulièrement critiqué la décision de la Fédération autonome de l'enseignement (FAE) de contester la Loi sur la laïcité de l'État avec les cotisations des travailleurs.",
+      "resume": "La FAE a été critiquée par le gouvernement pour l'utilisation des cotisations syndicales afin de contester la Loi sur la laïcité de l'État." }
+  ]
+}
+ERREUR: Expecting ',' delimiter: line 25 column 186 (char 2599)
+
+
+=== ERREUR POUR: La FIQ déplore que Christian Dubé brandisse les IP ===
+{
+  "resume_article": "L'article rapporte que la FIQ dénonce la présentation par le ministre de la Santé, Christian Dubé, des infirmières praticiennes spécialisées (IPS) comme de simples « substituts des médecins ». Le syndicat trouve cela paradoxal puisque le gouvernement du Québec a récemment réduit les cibles de postes d IPS, laissant des diplômées sans emploi. La FIQ insiste sur le fait que les IPS ne sont pas des substituts, mais des professionnelles avec une expertise propre, complémentaire aux médecins.",
+  "organisations": [
+    {
+      "nom": "Fédération interprofessionnelle de la santé (FIQ)",
+      "type": "Syndicat",
+      "action": "Déplore, dénonce, s étonne, rappelle",
+      "enjeu": "Utilisation des IPS comme substituts des médecins et réduction de postes",
+      "citation": "La FIQ déplore que Christian Dubé brandisse les IPS comme « substituts des médecins »", "La FIQ s étonne que le ministre de la Santé, Christian Dubé, présente les infirmières praticiennes spécialisées (IPS) comme solutions aux déboires de sa loi spéciale sur la rémunération des médecins puisque Québec a récemment réduit les cibles de postes d IPS.",
+      "resume": "La FIQ déplore que Christian Dubé présente les IPS comme des substituts des médecins, surtout quand le Québec réduit paradoxalement leurs cibles de postes." },
+    {
+      "nom": "Gouvernement du Québec (via Christian Dubé, ministre de la Santé)",
+      "type": "Gouvernement / Ministère",
+      "action": "Brandit, présente, adopte une loi spéciale, réduit les cibles de postes",
+      "enjeu": "Utilisation des IPS comme substituts et loi spéciale sur rémunération des médecins",
+      "citation": "le ministre Dubé présente les IPS comme de potentiels substituts des médecins, dans la foulée de la loi spéciale adoptée par Québec.", "Québec a récemment réduit les cibles de postes d IPS.",
+      "resume": "Le Gouvernement du Québec, par Christian Dubé, présente les IPS comme solution post-loi spéciale, tout en ayant paradoxalement réduit les cibles de postes pour elles." }
+  ]
+}
+ERREUR: Expecting ':' delimiter: line 9 column 370 (char 1153)
+
+
+=== ERREUR POUR: Loi 2 sur les médecins | La panique s’installe che ===
+{
+  "resume_article": "L'article met en lumière la panique croissante des patients québécois face à la Loi 2 sur les médecins, craignant une dégradation des soins et un accès réduit aux services médicaux. Les syndicats de médecins menacent de quitter la province et contestent la loi en justice, tandis que le gouvernement Legault est vivement critiqué pour son manque d'explications claires, alimentant l'incertitude. Des associations comme le RPCU et le Conseil pour la protection des malades dénoncent cette situation, soulignant les craintes grandissantes des usagers face aux impacts de la réforme.",
+  "organisations": [
+    {
+      "nom": "Collectif de médecins",
+      "type": "Professionnels de la santé",
+      "action": "Menacent de déserter le Québec",
+      "enjeu": "Impact Loi 2 sur pratique médicale et départs",
+      "citation": "Des médecins qui ne décolèrent pas et menacent de déserter le Québec, un ministre qui quitte le navire, des syndicats qui se tournent vers les tribunaux : pendant que tous se déchirent sur la place publique, les patients s inquiètent.",
+      "resume": "Les médecins, en colère contre la Loi 2, menacent de quitter le Québec, craignant les impacts négatifs de cette loi sur leur liberté de pratique." },
+    {
+      "nom": "Syndicats / Associations syndicales (des médecins)",
+      "type": "Syndicat / Association professionnelle",
+      "action": "Se tournent vers les tribunaux, ne pas expliquer",
+      "enjeu": "Contestation légale et communication sur la Loi 2",
+      "citation": "des syndicats qui se tournent vers les tribunaux : pendant que tous se déchirent sur la place publique, les patients s inquiètent." "On est dans la surenchère, et ni le gouvernement ni les associations syndicales n expliquent les choses, déplore Mme Tremblay.",
+      "resume": "Les syndicats contestent la Loi 2 en engageant des poursuites judiciaires, et sont critiqués pour leur manque d'explications sur les enjeux. " },
+    {
+      "nom": "Regroupement provincial des comités des usagers (RPCU)",
+      "type": "OBNL / Association d'usagers",
+      "action": "Exprime les craintes des patients, dénonce le manque d'explications",
+      "enjeu": "Inquiétude des patients face à la Loi 2",
+      "citation": "Des patients inquiets : c’est ce qu’on entend dans toutes les régions du Québec, dit Sylvie Tremblay, directrice générale du Regroupement provincial des comités des usagers (RPCU)." "On est dans la surenchère, et ni le gouvernement ni les associations syndicales n expliquent les choses, déplore Mme Tremblay.",
+      "resume": "Le RPCU rapporte la panique et les multiples craintes des patients face à la Loi 2, critiquant le manque d'informations des acteurs principaux." },
+    {
+      "nom": "Gouvernement Legault",
+      "type": "Gouvernement / Parti politique au pouvoir",
+      "action": "Propose la Loi 2, critiqué pour ses conséquences et manque d'explications",
+      "enjeu": "Conséquences de la Loi 2 et communication publique",
+      "citation": "Le gouvernement Legault a mis « le feu dans la maison », dénonce Paul Brunet, du Conseil pour la protection des malades." "On est dans la surenchère, et ni le gouvernement ni les associations syndicales n expliquent les choses, déplore Mme Tremblay.",
+      "resume": "Le gouvernement Legault est accusé d'avoir créé une crise avec la Loi 2 et de ne pas suffisamment expliquer la situation, alimentant la peur." },
+    {
+      "nom": "Conseil pour la protection des malades",
+      "type": "OBNL / Association de défense des droits",
+      "action": "Dénonce l'action du gouvernement, s'inquiète des conséquences",
+      "enjeu": "Protection des patients et impact de la Loi 2",
+      "citation": "Le gouvernement Legault a mis « le feu dans la maison », dénonce Paul Brunet, du Conseil pour la protection des malades." "Je ne comprends pas qu’on nous garroche ça par la tête.",
+      "resume": "Le Conseil pour la protection des malades dénonce les actions du gouvernement Legault et alerte sur les graves conséquences de la Loi 2 pour les patients." }
+  ]
+}
+ERREUR: Expecting ',' delimiter: line 18 column 11 (char 1682)
+
+
+=== ERREUR POUR: Projet de loi 3 : une nouvelle atteinte à la démoc ===
+{
+  "resume_article": "L article, diffusé par la Fédération québécoise des professeures et professeurs d université (FQPPU), dénonce le projet de loi 3 du gouvernement du Québec, déposé par le ministre du Travail Jean Boulet. Il critique la prétendue \"modernisation\" de la vie syndicale, qui imposerait de lourdes contraintes administratives et restreindrait l usage des cotisations pour l action sociale, politique ou juridique. La FQPPU y voit une atteinte grave à la démocratie syndicale, à la défense des droits des professeurs et à l affaiblissement des contre-pouvoirs, dans la lignée du projet de loi 89, et appelle à un front commun pour protéger les voix critiques.",
+  "organisations": [
+    {
+      "nom": "Fédération québécoise des professeures et professeurs d université (FQPPU)",
+      "type": "Syndicat",
+      "action": "Dénonce, critique, appelle à faire front commun",
+      "enjeu": "Démocratie syndicale, droits professeurs, voix critiques",
+      "citation": "La FQPPU appelle à faire front commun pour protéger la démocratie syndicale et les voix critiques dans le débat public. En prétendant « moderniser » la vie syndicale, le projet de loi 3 déposé par le ministre du Travail, Jean Boulet, impose à la Fédération une série d obligations bureaucratiques.",
+      "resume": "La FQPPU dénonce le projet de loi 3 comme une attaque contre la démocratie syndicale et les voix critiques, appelant à l unité pour défendre les droits des professeurs." },
+    {
+      "nom": "Gouvernement du Québec",
+      "type": "Gouvernement provincial",
+      "action": "Propose, adopte, restreint, affaiblit",
+      "enjeu": "Modernisation vie syndicale, affaiblissement contre-pouvoirs, droit de grève",
+      "citation": "Après l adoption du projet de loi 89 sur le droit de grève, le projet de loi 3 s inscrit dans une tendance à réduire la force des voix indépendantes capables de critiquer le gouvernement. Le gouvernement se réserve en pratique un droit de veto sur la contestation juridique et sur la parole collective.",
+      "resume": "Le Gouvernement du Québec propose le projet de loi 3 et a précédemment adopté le projet de loi 89, démontrant une tendance à affaiblir les contre-pouvoirs et les voix critiques." },
+    {
+      "nom": "Jean Boulet, ministre du Travail",
+      "type": "Ministère",
+      "action": "Dépose",
+      "enjeu": "Projet de loi 3, "modernisation" vie syndicale, restrictions",
+      "citation": "En prétendant « moderniser » la vie syndicale, le projet de loi 3 déposé par le ministre du Travail, Jean Boulet, impose à la Fédération une série d obligations bureaucratiques et de restrictions.",
+      "resume": "Jean Boulet, ministre du Travail, a déposé le projet de loi 3, qui prétend moderniser la vie syndicale, mais est perçu comme une atteinte aux droits des syndicats." }
+  ]
+}
+ERREUR: Expecting ',' delimiter: line 24 column 35 (char 2385)
+
+
+=== ERREUR POUR: Jean-François Houle réclame une rencontre avec le  ===
+{
+  "resume_article": "Jean-François Houle, candidat à la mairie de Drummondville, s'engage à réclamer une rencontre avec le Premier ministre François Legault s'il est élu, pour discuter de l'épineux dossier du nouvel hôpital. Il dénonce les retards du Gouvernement du Québec concernant les mesures urgentes et la construction, partageant les inquiétudes de la Coalition pour un hôpital régional. M. Houle souligne l importance de ce projet pour la région, citant les attentes de la population en matière de services médicaux équitables. Il compte collaborer avec des députés provinciaux pour faire avancer ce dossier prioritaire.",
+  "organisations": [
+    {
+      "nom": "Jean-François Houle",
+      "type": "Candidat à la mairie de Drummondville",
+      "action": "Réclame une rencontre, appuie, dénonce, promet d agir",
+      "enjeu": "Construction hôpital, services santé à Drummondville",
+      "citation": "Jean-François Houle entend réclamer rapidement une rencontre à ce sujet avec le premier ministre du Québec, François Legault, s il est élu maire..." et "«Cette situation est inacceptable. Au cours de ma campagne électorale, j ai répondu sans hésitation à la demande de la Coalition afin d appuyer ses actions.",
+      "resume": "Candidat à la mairie de Drummondville, il réclame une rencontre avec le Premier ministre pour l hôpital et appuie la Coalition, dénonçant les délais inacceptables." },
+    {
+      "nom": "Gouvernement du Québec (incluant le Premier ministre et les ministres)",
+      "type": "Gouvernement provincial",
+      "action": "Annonce délai, est visé par demande de rencontre, évoque échéancier",
+      "enjeu": "Délais nouvel hôpital et mesures urgentes Sainte-Croix",
+      "citation": "...nouveau délai annoncé par Québec concernant la mise en place de mesures pourtant jugées urgentes à l hôpital Sainte-Croix..." et "...le projet de construction d unités modulaires à l urgence du centre hospitalier ne chemine pas selon l échéancier initialement évoqué par le gouvernement du Québec.",
+      "resume": "Le Gouvernement est critiqué pour les délais annoncés concernant le nouvel hôpital et les mesures urgentes à Sainte-Croix, provoquant l insatisfaction." },
+    {
+      "nom": "Coalition pour un hôpital régional",
+      "type": "Coalition citoyenne",
+      "action": "Exprime inquiétudes et déception, demande appui",
+      "enjeu": "Délais pour nouvel hôpital et mesures urgentes",
+      "citation": "Le candidat à la mairie fait ainsi écho aux inquiétudes et à la déception de la Coalition pour un hôpital régional, à la suite du nouveau délai annoncé par Québec...",
+      "resume": "Cette coalition exprime de vives inquiétudes et de la déception face aux retards annoncés par Québec concernant le projet d hôpital." },
+    {
+      "nom": "La population de Drummondville et sa région",
+      "type": "Groupe de citoyens",
+      "action": "Demande, exprime attentes via sondage",
+      "enjeu": "Accès services médicaux équitables et nouvel hôpital",
+      "citation": "La population le demande» affirme M. Houle..." et "«La population veut d abord et avant tout avoir accès à des services médicaux et de santé plus équitables pour notre monde.",
+      "resume": "La population demande l accès à des services médicaux équitables et considère le nouvel hôpital comme un moyen essentiel d y parvenir." },
+    {
+      "nom": "CIUSSS de la Mauricie-et-du-Centre-du-Québec (MCQ)",
+      "type": "Organisme public de santé",
+      "action": "Commande un sondage sur les attentes",
+      "enjeu": "Attentes des usagers pour services santé et hôpital",
+      "citation": "...un récent sondage Léger, commandé par le CIUSSS de la Mauricie-et-du-Centre-du-Québec (MCQ) et le Comité des usagers...",
+      "resume": "Cet organisme public a commandé un sondage pour évaluer les attentes de la population concernant les services de santé et l avenir de l hôpital." },
+    {
+      "nom": "Comité des usagers (rattaché au CIUSSS MCQ)",
+      "type": "Association d usagers",
+      "action": "Commande un sondage sur les attentes",
+      "enjeu": "Attentes des usagers pour services santé et hôpital",
+      "citation": "...un récent sondage Léger, commandé par le CIUSSS de la Mauricie-et-du-Centre-du-Québec (MCQ) et le Comité des usagers...",
+      "resume": "Ce comité, en collaboration avec le CIUSSS, a commandé un sondage pour sonder les attentes des usagers quant aux services de santé." },
+    {
+      "nom": "Députés Lamontagne et Schneeberger",
+      "type": "Députés provinciaux",
+      "action": "Collaborent à la demande de rencontre",
+      "enjeu": "Obtenir rencontre Premier ministre pour l hôpital",
+      "citation": "Je compte donc réclamer, avec la collaboration des députés Lamontagne et Schneeberger, une rencontre, non seulement avec les ministres de la Santé et de l Économie, mais avec le premier ministre Legault lui-même.",
+      "resume": "Ces députés collaboreront avec Jean-François Houle pour obtenir une rencontre ministérielle sur l épineux dossier de l hôpital." }
+  ]
+}
+ERREUR: Expecting ',' delimiter: line 9 column 169 (char 1063)

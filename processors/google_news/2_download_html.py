@@ -78,10 +78,11 @@ def create_driver():
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    chrome_options.page_load_strategy = 'eager'  # Ne pas attendre toutes les ressources, juste le DOM
     return webdriver.Chrome(options=chrome_options)
 
 
-def download_html_selenium(driver, url: str, output_file: Path, timeout: int = 30) -> tuple[bool, str]:
+def download_html_selenium(driver, url: str, output_file: Path, timeout: int = 15) -> tuple[bool, str]:
     """Télécharge le HTML d'une URL Google News avec Selenium (suit la redirection JS)"""
     try:
         # Définir un timeout de page
@@ -91,7 +92,7 @@ def download_html_selenium(driver, url: str, output_file: Path, timeout: int = 3
         driver.get(url)
 
         # Attendre que la redirection JavaScript se fasse
-        sleep(3)
+        sleep(2)
 
         # Récupérer l'URL finale et le contenu
         final_url = driver.current_url
@@ -126,14 +127,8 @@ def process_article_download(task_data):
         filename = sanitize_filename(url, article_counter)
         output_file = output_dir / filename
 
-        # Télécharger avec Selenium (avec retry)
-        success, final_url = download_html_selenium(driver, url, output_file, timeout=30)
-
-        # Retry une fois en cas d'échec
-        if not success:
-            print(f"[{i}/{total}] 🔄 Nouvelle tentative...")
-            sleep(2)
-            success, final_url = download_html_selenium(driver, url, output_file, timeout=30)
+        # Télécharger avec Selenium (pas de retry, on skip si trop lent)
+        success, final_url = download_html_selenium(driver, url, output_file, timeout=15)
 
         if success:
             # Vérifier si le domaine final est québécois/canadien

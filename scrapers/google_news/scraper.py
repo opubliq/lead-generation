@@ -17,57 +17,57 @@ import pytz
 SEARCH_QUERIES = {
     # Organisations qui réagissent
     "orgs_denoncent": {
-        "query": "(association OR fédération OR coalition) dénonce Québec when:7d",
+        "query": "(association OR fédération OR coalition) dénonce Québec when:14d",
         "description": "Organisations qui dénoncent"
     },
     "orgs_reclament": {
-        "query": "(association OR fédération OR syndicat) réclame Québec when:7d",
+        "query": "(association OR fédération OR syndicat) réclame Québec when:14d",
         "description": "Organisations qui réclament"
     },
     "orgs_demandent": {
-        "query": "(ordre OR syndicat OR coalition) demande gouvernement when:7d",
+        "query": "(ordre OR syndicat OR coalition) demande gouvernement when:14d",
         "description": "Organisations qui demandent"
     },
     "orgs_critiquent": {
-        "query": "(association OR fédération OR ordre) critique (gouvernement OR ministre) when:7d",
+        "query": "(association OR fédération OR ordre) critique (gouvernement OR ministre) when:14d",
         "description": "Organisations qui critiquent"
     },
 
     # Processus législatifs
     "projet_loi_memoire": {
-        "query": "\"projet de loi\" mémoire when:7d",
+        "query": "\"projet de loi\" mémoire when:14d",
         "description": "Mémoires sur projets de loi"
     },
     "commission_parlementaire": {
-        "query": "commission parlementaire (présente OR témoigne) when:7d",
+        "query": "commission parlementaire (présente OR témoigne) when:14d",
         "description": "Témoignages en commission"
     },
     "consultation_publique": {
-        "query": "consultation publique (association OR fédération) when:7d",
+        "query": "consultation publique (association OR fédération) when:14d",
         "description": "Consultations publiques"
     },
 
     # Actions organisationnelles
     "coalition_appelle": {
-        "query": "(coalition OR regroupement) appelle Québec when:7d",
+        "query": "(coalition OR regroupement) appelle Québec when:14d",
         "description": "Coalitions qui appellent à l'action"
     },
     "syndicat_action": {
-        "query": "syndicat (critique OR dénonce OR réagit) gouvernement when:7d",
+        "query": "syndicat (critique OR dénonce OR réagit) gouvernement when:14d",
         "description": "Syndicats en action"
     },
     "ordre_professionnel": {
-        "query": "ordre professionnel (recommande OR propose OR s'inquiète) when:7d",
+        "query": "ordre professionnel (recommande OR propose OR s'inquiète) when:14d",
         "description": "Ordres professionnels actifs"
     },
 
     # Interpellations et oppositions
     "orgs_interpellent": {
-        "query": "(association OR fédération) (interpelle OR s'oppose) ministre when:7d",
+        "query": "(association OR fédération) (interpelle OR s'oppose) ministre when:14d",
         "description": "Organisations interpellent ministres"
     },
     "orgs_exigent": {
-        "query": "(syndicat OR coalition OR regroupement) exige Québec when:7d",
+        "query": "(syndicat OR coalition OR regroupement) exige Québec when:14d",
         "description": "Organisations qui exigent"
     }
 }
